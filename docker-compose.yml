@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./docker/nginx/
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - dockerlocal
+
+  php:
+    build:
+      args:
+        user: bpm
+        uid: 1000
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    networks:
+      - dockerlocal
+    environment:
+      PHP_IDE_CONFIG: "serverName=bpm"
+
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bpm
+      MYSQL_USER: bpm
+      MYSQL_PASSWORD: secret
+    networks:
+      - dockerlocal
+
+networks:
+  dockerlocal:
+    driver: "bridge"
+
+volumes:
+  mysqldata:
+    driver: "local"
