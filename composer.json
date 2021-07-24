@@ -14,7 +14,8 @@
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
         "rappasoft/laravel-livewire-tables": "^1.11",
-        "spatie/laravel-medialibrary": "^9.0.0"
+        "spatie/laravel-medialibrary": "^9.0.0",
+        "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -28,7 +29,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Database\\Init\\": "database/init/"
         }
     },
     "autoload-dev": {
