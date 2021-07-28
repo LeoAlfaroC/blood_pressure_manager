@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Database\Init\RolesAndPermissionsSeeder;
-use Database\Init\SuperUserSeeder;
+use Database\Init\FirstAdminUserSeeder;
 
 class SeedRequiredDataOnce
 {
@@ -26,7 +26,7 @@ class SeedRequiredDataOnce
     {
         collect([
             new RolesAndPermissionsSeeder,
-            new SuperUserSeeder,
+            new FirstAdminUserSeeder,
         ])->each->__invoke();
     }
 }

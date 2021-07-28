@@ -7,12 +7,10 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body class="h-screen">
-    <div class="container mx-auto">
-        @yield('content')
-    </div>
+<body class="h-screen" x-data="data">
+    @yield('container')
 
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
     @livewireScripts
 </body>
 </html>

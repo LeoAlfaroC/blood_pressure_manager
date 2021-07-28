@@ -27,8 +27,8 @@ class RolesAndPermissionsSeeder
         Role::create(['name' => 'Doctor'])
             ->givePermissionTo(['manage patients', 'export patient csv']);
 
-        Role::create(['name' => 'super-admin'])
-            ->givePermissionTo(Permission::all());
+        Role::create(['name' => 'Nurse'])
+            ->givePermissionTo(['manage patients']);
     }
 
     public function present(): bool
