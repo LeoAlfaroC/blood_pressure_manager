@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [StaffController::class, 'index'])->name('staff.index');
         Route::get('create', [StaffController::class, 'create'])->name('staff.create');
         Route::get('edit/{user}', [StaffController::class, 'edit'])->name('staff.edit');
+    });
+
+    Route::prefix('patients')->group(function () {
+        Route::get('/', [PatientController::class, 'index'])->name('patients.index');
+        Route::get('create', [PatientController::class, 'create'])->name('patients.create');
+        Route::get('edit/{patient}', [PatientController::class, 'edit'])->name('patients.edit');
+        Route::get('{patient}', [PatientController::class, 'show'])->name('patients.show');
     });
 });
