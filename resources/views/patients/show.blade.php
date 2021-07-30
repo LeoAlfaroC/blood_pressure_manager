@@ -12,6 +12,14 @@
             class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
         >
             Patient Details
+
+            @can('export patient csv')
+                <a class="float-right text-sm bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                   href="{{ route('patients.export_records', ['patient' => $patient]) }}"
+                >
+                    Export as CSV
+                </a>
+            @endcan
         </h2>
 
         <div class="w-2/3 mx-auto p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">

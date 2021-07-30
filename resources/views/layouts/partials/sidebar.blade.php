@@ -40,6 +40,7 @@
             </li>
         </ul>
         <ul>
+            @hasrole('Admin')
             <li class="relative px-6 py-3">
                 @if (str_contains(\Route::currentRouteName(), 'staff'))
                     <span
@@ -58,6 +59,7 @@
                     <span class="ml-4">Staff</span>
                 </a>
             </li>
+            @endhasrole
             <li class="relative px-6 py-3">
                 @if (str_contains(\Route::currentRouteName(), 'patients'))
                     <span
@@ -141,6 +143,7 @@
             </li>
         </ul>
         <ul>
+            @hasrole('Admin')
             <li class="relative px-6 py-3">
                 @if (str_contains(\Route::currentRouteName(), 'staff'))
                     <span
@@ -169,6 +172,7 @@
                     <span class="ml-4">Forms</span>
                 </a>
             </li>
+            @endhasrole
             <li class="relative px-6 py-3">
                 @if (str_contains(\Route::currentRouteName(), 'patients'))
                     <span

@@ -7,6 +7,15 @@
         class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
     >
         Patients
+
+        @can('export patient csv')
+        <a class="float-right text-sm bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+           href="{{ route('patients.export') }}"
+        >
+            Export as CSV
+        </a>
+        @endcan
+
         <a class="float-right text-sm bg-green-300 hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
            href="{{ route('patients.create') }}"
         >

@@ -25,16 +25,19 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::prefix('staff')->group(function () {
+    Route::prefix('staff')->middleware('role:Admin')->group(function () {
         Route::get('/', [StaffController::class, 'index'])->name('staff.index');
         Route::get('create', [StaffController::class, 'create'])->name('staff.create');
         Route::get('edit/{user}', [StaffController::class, 'edit'])->name('staff.edit');
+        Route::get('export', [StaffController::class, 'export'])->middleware('can:export staff csv')->name('staff.export');
     });
 
     Route::prefix('patients')->group(function () {
         Route::get('/', [PatientController::class, 'index'])->name('patients.index');
         Route::get('create', [PatientController::class, 'create'])->name('patients.create');
         Route::get('edit/{patient}', [PatientController::class, 'edit'])->name('patients.edit');
+        Route::get('export', [PatientController::class, 'export'])->name('patients.export');
         Route::get('{patient}', [PatientController::class, 'show'])->name('patients.show');
+        Route::get('{patient}/export', [PatientController::class, 'exportRecords'])->middleware('can:export patient csv')->name('patients.export_records');
     });
 });
