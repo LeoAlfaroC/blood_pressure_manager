@@ -25,4 +25,11 @@ class AuthController extends Controller
             return back()->with(['failure' => 'Incorrect credentials']);
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
+    }
 }
