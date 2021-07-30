@@ -27,9 +27,9 @@ And to remove them:
 docker-compose down
 ```
 
-Finally, run migrations and seeders:
+Finally, install dependencies and run migrations and seeders:
 ```
-docker exec -it <name_of_php_container> php artisan migrate --seed
+docker exec -it <name_of_php_container> composer install && php artisan migrate --seed
 ```
 
 (To find the name of the container, you can run "docker ps")
